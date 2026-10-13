@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { Suspense, useEffect, useState, type FormEvent } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { postJson } from "@/lib/api";
 
@@ -29,6 +29,15 @@ type InterviewResult = {
 };
 
 export default function InterviewPage() {
+  return (
+    <Suspense fallback={<div>Loading interview...</div>}>
+      <InterviewContent />
+    </Suspense>
+  );
+}
+
+
+function InterviewContent() {
   const params = useParams<{ interviewId: string }>();
   const interviewId = params.interviewId;
   const router = useRouter();
