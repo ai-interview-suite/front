@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { getJson } from "@/lib/api";
 
@@ -41,6 +41,15 @@ const dimensions = [
 ] as const;
 
 export default function ResultsPage() {
+  return (
+    <Suspense fallback={<div>Loading results...</div>}>
+      <ResultsContent />
+    </Suspense>
+  );
+}
+
+
+function ResultsContent() {
   const params = useParams<{ interviewId: string }>();
   const interviewId = params.interviewId;
   const router = useRouter();
