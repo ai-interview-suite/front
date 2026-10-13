@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# InterviewPrep
 
-## Getting Started
+The web front end for the [AI Interview Service](https://github.com/ai-interview-suite/api).
+Users sign up, upload a resume and a job description, answer five AI-generated
+interview questions, and get a scored report with per-question feedback.
 
-First, run the development server:
+Built with Next.js 16, React 19 and Tailwind CSS 4.
+
+## Setup
+
+The app needs the API running; follow the setup in the
+[api README](https://github.com/ai-interview-suite/api#setup) first.
+
+```bash
+npm install
+```
+
+Create `.env.local` in this folder (next to `package.json` — Next.js does not read
+env files from parent folders) and point it at the API, without a trailing slash:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8000
+```
+
+If this is missing, every request fails with "Backend URL is not configured."
+`NEXT_PUBLIC_*` values are read when the dev server starts, so restart it after
+changing them.
+
+## Running
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Use `localhost`, not
+`127.0.0.1`: the API's CORS settings only allow `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route | Purpose |
+| --- | --- |
+| `/` | Landing page |
+| `/register`, `/login` | Create an account and sign in |
+| `/dashboard` | Upload a resume PDF and job description to start an interview |
+| `/interviews` | List of your interviews with status, score and recommendation |
+| `/interview/[interviewId]` | Answer the five questions and submit |
+| `/interview/[interviewId]/results` | Overall score, recommendation and per-question feedback |
 
-## Learn More
+## Project layout
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/                 Routes (App Router), one folder per page above
+  components/
+    auth-form.tsx      Shared login/register form
+  lib/
+    api.ts             Fetch helpers that call the API with the bearer token
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes and limitations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- The access token is kept in `sessionStorage`, so closing the tab signs you out.
+- Interview questions are also kept in `sessionStorage` when an interview starts.
+  "Continue" on an in-progress interview therefore only works in the same browser
+  session; elsewhere the interview page reports that the questions are unavailable.
+- If the API returns an unhandled `500`, the browser reports "Failed to fetch"
+  because the error response has no CORS headers. Check the API's terminal for the
+  real error — a wrong `DATABASE_URL` is the usual cause.
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
