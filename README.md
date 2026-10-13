@@ -6,6 +6,13 @@ interview questions, and get a scored report with per-question feedback.
 
 Built with Next.js 16, React 19 and Tailwind CSS 4.
 
+## Live
+
+| | URL |
+| --- | --- |
+| Frontend | https://ai-interview-suite-front.vercel.app |
+| API | https://ai-interview-suite-api.onrender.com ([docs](https://ai-interview-suite-api.onrender.com/docs)) |
+
 ## Setup
 
 The app needs the API running; follow the setup in the
@@ -33,7 +40,25 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000). Use `localhost`, not
-`127.0.0.1`: the API's CORS settings only allow `http://localhost:3000`.
+`127.0.0.1`: the API only accepts browser requests from the origins in its
+`CORS_ORIGINS` setting, which lists `http://localhost:3000`.
+
+## Deployment
+
+| Part | Host |
+| --- | --- |
+| Frontend | [Vercel](https://vercel.com), deployed from this repo |
+| API | [Render](https://render.com) web service ([api](https://github.com/ai-interview-suite/api#deployment) repo) |
+| Database | [Neon](https://neon.tech) serverless PostgreSQL, AWS `ap-southeast-1` |
+
+In the Vercel project, set `NEXT_PUBLIC_API_BASE_URL` to
+`https://ai-interview-suite-api.onrender.com` for the Production environment,
+then redeploy, since the value is baked in at build time. Vercel uses the
+default Next.js build (`npm run build`).
+
+If the Vercel URL changes, or you add a preview or custom domain, add it to the
+api's `CORS_ORIGINS` on Render. The api is on Render's free plan, so the first
+request after it has been idle can take up to a minute while it wakes up.
 
 ## Pages
 
