@@ -89,16 +89,25 @@ export default function DashboardPage() {
             InterviewPrep
           </a>
 
-          <button
-            type="button"
-            onClick={() => {
-              sessionStorage.removeItem("access_token");
-              router.push("/login");
-            }}
-            className="text-sm font-medium text-slate-600 hover:text-blue-600"
-          >
-            Sign out
-          </button>
+          <div className="flex items-center gap-6">
+            <a
+              href="/interviews"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              My interviews
+            </a>
+
+            <button
+              type="button"
+              onClick={() => {
+                sessionStorage.removeItem("access_token");
+                router.push("/login");
+              }}
+              className="text-sm font-medium text-slate-600 hover:text-blue-600"
+            >
+              Sign out
+            </button>
+          </div>
         </header>
 
         <section className="mt-12">
