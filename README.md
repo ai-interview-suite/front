@@ -10,7 +10,7 @@ Built with Next.js 16, React 19 and Tailwind CSS 4.
 
 | | URL |
 | --- | --- |
-| Frontend | https://ai-interview-suite-front.vercel.app |
+| Frontend | https://aiinterviewsuite.vercel.app |
 | API | https://ai-interview-suite-api.onrender.com ([docs](https://ai-interview-suite-api.onrender.com/docs)) |
 
 ## Setup
