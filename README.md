@@ -6,6 +6,8 @@ interview questions, and get a scored report with per-question feedback.
 
 Built with Next.js 16, React 19 and Tailwind CSS 4.
 
+![Interview results page](public/screenshots/results.png)
+
 ## Live
 
 | | URL |
@@ -64,12 +66,27 @@ request after it has been idle can take up to a minute while it wakes up.
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Landing page |
+| `/` | Landing page: log in / sign up buttons, features, how it works and app screenshots |
 | `/register`, `/login` | Create an account and sign in |
 | `/dashboard` | Upload a resume PDF and job description to start an interview |
 | `/interviews` | List of your interviews with status, score and recommendation |
 | `/interview/[interviewId]` | Answer the five questions and submit |
 | `/interview/[interviewId]/results` | Overall score, recommendation and per-question feedback |
+
+## Screenshots
+
+The landing page shows these screenshots from `public/screenshots/`. They were
+taken from the app running against a mock API with sample data, so no real
+user data appears in them.
+
+| Start an interview | Answer questions |
+| --- | --- |
+| ![Dashboard](public/screenshots/dashboard.png) | ![Interview](public/screenshots/interview.png) |
+| **Review your results** | **See your history** |
+| ![Results](public/screenshots/results.png) | ![Interviews](public/screenshots/interviews.png) |
+
+If a page's design changes, retake its screenshot at 1280×800 so the landing
+page stays accurate.
 
 ## Project layout
 
@@ -80,6 +97,8 @@ src/
     auth-form.tsx      Shared login/register form
   lib/
     api.ts             Fetch helpers that call the API with the bearer token
+public/
+  screenshots/         App screenshots used on the landing page and in this README
 ```
 
 ## Notes and limitations
