@@ -89,7 +89,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
     }
 
     return (
-        <main className="flex min-h-screen items-center justify-center px-5 py-12">
+        <main className="flex flex-1 items-center justify-center px-5 py-12">
             <section className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
                 <Link href="/" className="text-lg font-bold">
                     InterviewPrep

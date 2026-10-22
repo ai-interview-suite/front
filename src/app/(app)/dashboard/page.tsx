@@ -82,35 +82,9 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen px-5 py-10 sm:px-8">
+    <main className="flex-1 px-5 py-10 sm:px-8">
       <div className="mx-auto max-w-3xl">
-        <header className="flex items-center justify-between">
-          <a href="/dashboard" className="text-xl font-bold">
-            InterviewPrep
-          </a>
-
-          <div className="flex items-center gap-6">
-            <a
-              href="/interviews"
-              className="text-sm font-medium text-blue-600 hover:underline"
-            >
-              My interviews
-            </a>
-
-            <button
-              type="button"
-              onClick={() => {
-                sessionStorage.removeItem("access_token");
-                router.push("/login");
-              }}
-              className="text-sm font-medium text-slate-600 hover:text-blue-600"
-            >
-              Sign out
-            </button>
-          </div>
-        </header>
-
-        <section className="mt-12">
+        <section>
           <h1 className="text-3xl font-bold tracking-tight">
             Prepare for your next interview
           </h1>

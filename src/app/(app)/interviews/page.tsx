@@ -81,23 +81,9 @@ export default function InterviewsPage() {
   }, [router]);
 
   return (
-    <main className="min-h-screen px-5 py-10 sm:px-8">
+    <main className="flex-1 px-5 py-10 sm:px-8">
       <div className="mx-auto max-w-4xl">
-        <header className="flex items-center justify-between">
-          <a href="/dashboard" className="text-xl font-bold">
-            InterviewPrep
-          </a>
-
-          <button
-            type="button"
-            onClick={() => router.push("/dashboard")}
-            className="text-sm font-medium text-blue-600 hover:underline"
-          >
-            New interview
-          </button>
-        </header>
-
-        <section className="mt-10">
+        <section>
           <h1 className="text-3xl font-bold tracking-tight">My interviews</h1>
 
           <p className="mt-3 text-slate-600">

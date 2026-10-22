@@ -92,11 +92,12 @@ page stays accurate.
 
 ```
 src/
-  app/                 Routes (App Router), one folder per page above
+  app/                 Routes (App Router), split into route groups by layout:
+    (marketing)/       
+    (auth)/            
+    (app)/             
   components/
-    auth-form.tsx      Shared login/register form
   lib/
-    api.ts             Fetch helpers that call the API with the bearer token
 public/
   screenshots/         App screenshots used on the landing page and in this README
 ```
