@@ -66,36 +66,8 @@ const screenshots = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen px-6 py-10">
+    <main className="flex-1 px-6 py-10">
       <div className="mx-auto max-w-5xl">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold tracking-tight">
-              InterviewPrep
-            </h1>
-
-            <span className="hidden rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700 sm:inline">
-              AI Powered
-            </span>
-          </div>
-
-          <nav className="flex items-center gap-2">
-            <Link
-              href="/login"
-              className="rounded-lg px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
-            >
-              Log in
-            </Link>
-
-            <Link
-              href="/register"
-              className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
-            >
-              Sign up
-            </Link>
-          </nav>
-        </header>
-
         <section className="py-20 text-center sm:py-24">
           <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-blue-600">
             Prepare with confidence

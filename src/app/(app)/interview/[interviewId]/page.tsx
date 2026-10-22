@@ -166,24 +166,15 @@ function InterviewContent() {
   }
 
   return (
-    <main className="min-h-screen px-5 py-10 sm:px-8">
+    <main className="flex-1 px-5 py-10 sm:px-8">
       <div className="mx-auto max-w-3xl">
-        <header className="flex items-center justify-between">
-          <a href="/dashboard" className="text-xl font-bold">
-            InterviewPrep
-          </a>
-          <span className="text-sm text-slate-500">
-            {answeredCount} of {questions.length} answered
-          </span>
-        </header>
-
-        <section className="mt-10">
+        <section>
           <div className="mb-3 flex items-center justify-between text-sm">
             <span className="font-medium">
               Question {currentIndex + 1} of {questions.length}
             </span>
             <span className="text-slate-500">
-              {Math.round(((currentIndex + 1) / questions.length) * 100)}%
+              {answeredCount} of {questions.length} answered
             </span>
           </div>
 
