@@ -111,6 +111,15 @@ export default function AuthForm({ mode }: AuthFormProps) {
                     </p>
                 )}
 
+                {!isRegister && (
+                    <a
+                        href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/google/login`}
+                        className="mt-6 flex w-full items-center justify-center rounded-lg border border-slate-300 px-4 py-3 font-medium hover:bg-slate-50"
+                    >
+                        Continue with Google
+                    </a>
+                )}
+
                 <form onSubmit={handleSubmit} className="mt-8 space-y-5">
                     <div>
                         <label htmlFor="email" className="mb-2 block text-sm font-medium">

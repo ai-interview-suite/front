@@ -35,6 +35,15 @@ If this is missing, every request fails with "Backend URL is not configured."
 `NEXT_PUBLIC_*` values are read when the dev server starts, so restart it after
 changing them.
 
+## Google sign-in
+
+"Continue with Google" links to the API's `/auth/google/login`. The API sends
+the browser back to `/auth/google/callback?code=...`, which exchanges the code
+for an access token. The API needs Google OAuth and Redis configured, and its
+`FRONTEND_URL` must point at this app; see
+[Google sign-in](https://github.com/ai-interview-suite/api#google-sign-in) in
+the api README.
+
 ## Running
 
 ```bash
@@ -67,7 +76,8 @@ request after it has been idle can take up to a minute while it wakes up.
 | Route | Purpose |
 | --- | --- |
 | `/` | Landing page: log in / sign up buttons, features, how it works and app screenshots |
-| `/register`, `/login` | Create an account and sign in |
+| `/register`, `/login` | Create an account and sign in (the login page also has "Continue with Google") |
+| `/auth/google/callback` | Finishes Google sign-in: exchanges the API's one-time code for an access token, then opens the dashboard |
 | `/dashboard` | Upload a resume PDF and job description to start an interview |
 | `/interviews` | List of your interviews with status, score and recommendation |
 | `/interview/[interviewId]` | Answer the five questions and submit |
@@ -104,6 +114,8 @@ public/
 
 ## Notes and limitations
 
+- The login page ignores the `?error=` reason the API adds when Google sign-in
+  fails, so the user sees the normal login form with no message.
 - The access token is kept in `sessionStorage`, so closing the tab signs you out.
 - Interview questions are also kept in `sessionStorage` when an interview starts.
   "Continue" on an in-progress interview therefore only works in the same browser
